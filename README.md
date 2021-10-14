@@ -1,8 +1,8 @@
-# Computacion Distribuida 👨🧑💻
+# Computacion Distribuida 👨🧑🏼💻
 
 Repositorio de prácticas y ejercicios de La asignatura de Fundamentos de Bases de Datos semestre 2022-1
 
-- [Computacion Distribuida 👨🧑💻](#computacion-distribuida-)
+- [Computacion Distribuida 👨🧑🏼💻](#computacion-distribuida-)
   - [**Practica1 Introducción a Elixir**](#practica1-introducción-a-elixir)
     - [1.Objetivo 🏆](#1objetivo-)
     - [2.Evaluacion​ ​🎼​👌​💯​](#2evaluacion-)
@@ -33,4 +33,4 @@ con el comando.
 
 
 ---
-⌨️ con ❤️ por [Victor Gallegos](https://github.com/VictorDeGallegos)🧑🏻 ,  [Carlos Cruz](https://github.com/CarlosCruzRangel)🧑🏼 [Demian Jimenez](https://github.com/demian35)🧑🏻
+⌨️ con ❤️ por [Victor Gallegos](https://github.com/VictorDeGallegos)👨 ,  [Carlos Cruz](https://github.com/CarlosCruzRangel)🧑🏼 
