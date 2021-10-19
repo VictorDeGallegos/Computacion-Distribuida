@@ -37,12 +37,56 @@ defmodule Module1 do
     "La Probabilidad es de:, #{resultado}"
   end
 
-  def digits(n) do
-    n
-  end
+  # Un poco de recursividad,combinación de división de enteros y la operación de módulo
+  # # Dado un número entero, genera una lista de sus dígitos
+ # Ejemplo de Ejecucion Module1.digits(1724)
+    def digits(n) when n < 0, do: digits(-n)
+
+    def digits(n) when is_integer(n) do
+      calc(n, [])
+    end
+
+    defp calc(digit, digits)
+      when digit < 10,
+      do: [digit | digits]
+
+    defp calc(n, digits) do
+      digit = Integer.mod(n, 10)
+
+      n
+      |> div(10)
+      |> calc([digit | digits])
+    end
 
 end
 
+defmodule Module2 do
+  def test do
+    ok_function = fn() -> :ok end
+    ok_function.()
+  end
+
+  def solve(a, b, n) do
+    solucion = solve_congruence(a,n)
+    if (solucion == 1) do
+      IO.puts("Tiene solución :)")
+    else
+      :error
+    end
+  end
+#fun aux para determinar si son primos relativos
+  def solve_congruence(a, b) do
+    if (a<b) do
+      solve_congruence(b, a)
+    end
+    if (b==0) do
+      a
+    else
+      solve_congruence(b, rem(a, b))
+    end
+  end
+
+end
 
 defmodule Module3 do
 
