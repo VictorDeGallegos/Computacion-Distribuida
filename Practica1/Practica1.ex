@@ -69,7 +69,7 @@ defmodule Module2 do
   def solve(a, b, n) do
     solucion = solve_congruence(a,n)
     if (solucion == 1) do
-      IO.puts("Tiene solución :)")
+      IO.puts("Si Tiene solución :)")
     else
       :error
     end
@@ -89,13 +89,40 @@ defmodule Module2 do
 end
 
 defmodule Module3 do
+#Funcion recursiva para eliminar elementos duplicados
+# Ejemplo de ejecucion  Module3.elim_dup([1, 2, 3, 3, 2, 1])
+def reverse(list) do
+  do_reverse(list, [])
+end
 
-  def rev(l) do
-    :ok
+defp do_reverse([], reversed) do
+  reversed
+end
+
+defp do_reverse([h|t], reversed) do
+  do_reverse(t, [h|reversed])
+end
+
+def sieve_of_erathostenes(n) do
+  :ok
+end
+
+
+  def elim_dup(l) do
+    elim_dup(l, MapSet.new)
   end
 
-  def sieve_of_erathostenes(n) do
-    :ok
+
+  defp elim_dup([x | rest], found) do
+    if MapSet.member?(found, x) do
+      elim_dup(rest, found)
+    else
+      [x | elim_dup(rest, MapSet.put(found, x))]
+    end
+  end
+
+  defp elim_dup([], _) do
+    []
   end
 
 end
