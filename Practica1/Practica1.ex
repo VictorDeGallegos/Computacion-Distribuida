@@ -37,9 +37,24 @@ defmodule Module1 do
     "La Probabilidad es de:, #{resultado}"
   end
 
-  def digits(n) do
-    n
-  end
+  # Un poco de recursividad,combinación de división de enteros y la operación de módulo
+    def digits(n) when n < 0, do: digits(-n)
+
+    def digits(n) when is_integer(n) do
+      calc(n, [])
+    end
+
+    defp calc(digit, digits)
+      when digit < 10,
+      do: [digit | digits]
+
+    defp calc(n, digits) do
+      digit = Integer.mod(n, 10)
+
+      n
+      |> div(10)
+      |> calc([digit | digits])
+    end
 
 end
 
