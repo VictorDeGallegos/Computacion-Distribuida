@@ -106,8 +106,8 @@ end
 
 
 #FUNCION CRIBA DE ERATHOSTENES
-#Recibe un numero mayor a 2 y regresa la lista con los numeros 
-#primos anteriores al numero ingresado, si es primo el numero 
+#Recibe un numero mayor a 2 y regresa la lista con los numeros
+#primos anteriores al numero ingresado, si es primo el numero
 #ingresado entonces regresa el mismo numero con sus antesesores primos.
 
 
@@ -117,18 +117,18 @@ def sieve_of_erathostenes(n) when n < 2, do: "Upsss, you did it again. Ingresa u
 #Caso 2.-ingresan un numero mayor a dos
 #Uso de filter para filtrar solo los que evalua a true
 def sieve_of_erathostenes(n), do: Enum.filter(2..n, &validarprimo(&1))
-  
+
 
   #Funcion auxiliar privada para validar los numeros primos anteriores a la entrada.
   defp validarprimo(n) when n in [2, 3], do: true
-  
+
   defp validarprimo(x) do
 
     inicialcot = div(x, 2)
     #Enum.reduce Transforma a un unico valor
     Enum.reduce(2..inicialcot, {true, inicialcot}, fn(fac, {primo, cotsup}) ->
-      
-      #Comprueba 3 condiciones en vez de anidarlas en un if 
+
+      #Comprueba 3 condiciones en vez de anidarlas en un if
       cond do
         #primer condicion
         !primo -> {false, fac}
@@ -137,7 +137,7 @@ def sieve_of_erathostenes(n), do: Enum.filter(2..n, &validarprimo(&1))
         #tercera condicion
         true ->
           primo = rem(x, fac) != 0
-          cotsup = if primo, do: 
+          cotsup = if primo, do:
                           div(x, fac + 1), else: fac
                           {primo , cotsup}
       end
@@ -194,6 +194,7 @@ defmodule Module4 do
     GenServer.start_link(__MODULE__, [])
   end
 
+  #Operaciones de listas
   def add(pid, item) do
     GenServer.cast(pid, item)
   end
@@ -213,7 +214,7 @@ defmodule Module4 do
 
   #Server
   def terminate(_reason, list) do
-    IO.puts("Proceso terminado, lista de productos con:.")
+    IO.puts("Proceso terminado, lista de elementos final:")
     IO.inspect(list)
     :ok
   end
@@ -228,6 +229,7 @@ defmodule Module4 do
   end
 
   def handle_call(:view, _from, list) do
+    IO.puts("Elementos de la lista: ")
     {:reply, list, list}
   end
 
