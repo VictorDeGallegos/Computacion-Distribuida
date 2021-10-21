@@ -103,8 +103,45 @@ defp do_reverse([h|t], reversed) do
   do_reverse(t, [h|reversed])
 end
 
-def sieve_of_erathostenes(n) do
-  :ok
+
+
+#FUNCION CRIBA DE ERATHOSTENES
+#Recibe un numero mayor a 2 y regresa la lista con los numeros 
+#primos anteriores al numero ingresado, si es primo el numero 
+#ingresado entonces regresa el mismo numero con sus antesesores primos.
+
+
+#Caso 1.- ingrasan un numero menor a dos
+def sieve_of_erathostenes(n) when n < 2, do: "Upsss, you did it again. Ingresa un numero natural mayor a dos"
+
+#Caso 2.-ingresan un numero mayor a dos
+#Uso de filter para filtrar solo los que evalua a true
+def sieve_of_erathostenes(n), do: Enum.filter(2..n, &validarprimo(&1))
+  
+
+  #Funcion auxiliar privada para validar los numeros primos anteriores a la entrada.
+  defp validarprimo(n) when n in [2, 3], do: true
+  
+  defp validarprimo(x) do
+
+    inicialcot = div(x, 2)
+    #Enum.reduce Transforma a un unico valor
+    Enum.reduce(2..inicialcot, {true, inicialcot}, fn(fac, {primo, cotsup}) ->
+      
+      #Comprueba 3 condiciones en vez de anidarlas en un if 
+      cond do
+        #primer condicion
+        !primo -> {false, fac}
+        #segunda condicion
+        fac > cotsup -> {primo, cotsup}
+        #tercera condicion
+        true ->
+          primo = rem(x, fac) != 0
+          cotsup = if primo, do: 
+                          div(x, fac + 1), else: fac
+                          {primo , cotsup}
+      end
+    end) |> elem(0)
 end
 
 
