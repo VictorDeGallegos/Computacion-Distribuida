@@ -1,4 +1,7 @@
 defmodule Tree do
+  @moduledoc """
+  Algoritmos clásicos distribuidos (Broadcast y Convergecast)
+  """
   def new(n) do
     create_tree(Enum.map(1..n, fn _ -> spawn(fn -> loop() end) end), %{}, 0)
   end
